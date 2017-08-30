@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
-    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
     <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
-    <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
 
     <title>Webcrawler</title>
 
@@ -50,8 +48,40 @@
         color: orange;
       }
       #left {
-        margin-left: 50px;
-        width:
+        margin-left: 60px;
+        width: 60%;
+        display: inline-block;
+      }
+      #right {
+        margin-left: 30px;
+        width: 30%;
+        display: inline-block;
+        vertical-align: top;
+      }
+      #top_ads, #main, #bottom_ads, #right_ads {
+        margin-bottom: 20px;
+      }
+      .aylf .header {
+        font-size: 14px;
+        color: orange;
+      }
+      .header {
+        font-size: 12px;
+      }
+      .title {
+        font-size: 18px;
+      }
+      .display_url {
+        color: #58a33f;
+        font-size: 13px;
+      }
+      .description {
+        font-size: 13px;
+        font-style: normal;
+        font-weight: normal;
+      }
+      .deeplinks a {
+        font-size: 13px;
       }
     </style>
   </head>
@@ -68,80 +98,16 @@
     </div>
     <hr/>
 
-    <div id="left">
-      <div id="top_ads">
-        <span>Ads</span>
-        <div class="insp_result {{type}}">
-          <a href="{{url}}">{{title}}</a>
-          <div>{{display_url}}</div>
-          <div class="deeplinks">
-            <a href="{{url}}">{{title}}</a>
-          </div>
-        </div>
-      </div>
-      <div id="main">
-        <span>Web Results</span>
-        <div class="insp_result web">
-          <a href="{{url}}">{{title}}</a>
-          <div>{{display_url}}</div>
-          <div>{{description}}</div>
-          <div class="deeplinks">
-            <a href="{{url}}">{{title}}</a>
-          </div>
-        </div>
-      </div>
-      <div id="bottom_ads">
-        <span>Ads</span>
-        <div class="insp_result ad">
-          <a href="{{url}}">{{title}}</a>
-          <div>{{display_url}}</div>
-          <div>{{description}}</div>
-          <div class="deeplinks">
-            {{#deeplinks}}
-            <a href="{{url}}">{{title}}</a>
-            {{/deeplinks}}
-          </div>
-        </div>
-      </div>
-      <div id="bottom_aylf">
-        <span>Are you looking for?</span>
-        <div class="insp_result aylf">
-          <a href="http://google.com">bottom AYLF result</a>
-        </div>
-      </div>
-    </div>
-    <div id="right">
-      <div id="right_ads">
-        <span>Ads</span>
-        <div class="insp_result ad">
-          <a href="{{url}}">{{title}}</a>
-          <div>{{display_url}}</div>
-          <div>{{description}}</div>
-          <div class="deeplinks">
-            <a href="{{url}}">{{title}}</a>
-          </div>
-        </div>
-      </div>
-      <div id="right_aylf">
-        <span>Are you looking for?</span>
-        <div class="insp_result aylf">
-          <a href="http://google.com">AYLF result</a>
-        </div>
-        <div class="insp_result aylf">
-          <a href="http://google.com">AYLF result</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- <amp-list width="auto" height="100" layout="fixed-height" src="http://localhost:8080/results">
+    <amp-list width="auto" height="100" layout="fixed-height" src="http://localhost:8080/results">
       <template type="amp-mustache">
         <div id="left">
           <div id="top_ads">
-            <span>Ads</span>
+            <span class="header">Ads</span>
             {{#top}}
             <div class="insp_result {{type}}">
-              <a href="{{url}}">{{title}}</a>
-              <div>{{display_url}}</div>
+              <a class="title" href="{{url}}">{{title}}</a>
+              <div class="display_url">{{display_url}}</div>
+              <div class="description">{{description}}</div>
               <div class="deeplinks">
                 {{#deeplinks}}
                 <a href="{{url}}">{{title}}</a>
@@ -151,35 +117,37 @@
             {{/top}}
           </div>
           <div id="main">
-            <span>Web Results</span>
+            <span class="header">Web Results</span>
             {{#main}}
             <div class="insp_result {{type}}">
-              <a href="{{url}}">{{title}}</a>
-              <div>{{display_url}}</div>
-              <div>{{description}}</div>
+              <a class="title" href="{{url}}">{{title}}</a>
+              <div class="display_url">{{display_url}}</div>
+              <div class="description">{{description}}</div>
+              {{#deeplinks}}
+              <div class="deeplinks">
+                <a href="{{url}}">{{title}}</a>
+              </div>
+              {{/deeplinks}}
+            </div>
+            {{/main}}
+          </div>
+          <div id="bottom_ads">
+            <span class="header">Ads</span>
+            {{#bottom}}
+            <div class="insp_result {{type}}">
+              <a class="title" href="{{url}}">{{title}}</a>
+              <div class="display_url">{{display_url}}</div>
+              <div class="description">{{description}}</div>
               <div class="deeplinks">
                 {{#deeplinks}}
                 <a href="{{url}}">{{title}}</a>
                 {{/deeplinks}}
               </div>
             </div>
-            {{/main}}
-          </div>
-          <div id="bottom_ads">
-            <span>Ads</span>
-            {{#bottom}}
-            <a href="{{url}}">{{title}}</a>
-            <div>{{display_url}}</div>
-            <div>{{description}}</div>
-            <div class="deeplinks">
-              {{#deeplinks}}
-              <a href="{{url}}">{{title}}</a>
-              {{/deeplinks}}
-            </div>
             {{/bottom}}
           </div>
-          <div id="bottom_aylf">
-            <span>Are you looking for?</span>
+          <div id="bottom_aylf" class="aylf">
+            <span class="header">Are you looking for?</span>
             {{#aylf}}
             <div class="insp_result {{type}}">
               <a href="{{url}}">{{title}}</a>
@@ -189,22 +157,20 @@
         </div>
         <div id="right">
           <div id="right_ads">
-            <span>Ads</span>
+            <span class="header">Ads</span>
             {{#right}}
             <div class="insp_result {{type}}">
-              <a href="{{url}}">{{title}}</a>
-              <div>{{display_url}}</div>
-              <div>{{description}}</div>
+              <a class="title" href="{{url}}">{{title}}</a>
+              <div class="display_url">{{display_url}}</div>
+              <div class="description">{{description}}</div>
               <div class="deeplinks">
-                {{#deeplinks}}
                 <a href="{{url}}">{{title}}</a>
-                {{/deeplinks}}
               </div>
             </div>
             {{/right}}
           </div>
-          <div id="right_aylf">
-            <span>Are you looking for?</span>
+          <div id="right_aylf" class="aylf">
+            <span class="header">Are you looking for?</span>
             {{#aylf}}
             <div class="insp_result {{type}}">
               <a href="{{url}}">{{title}}</a>
@@ -213,6 +179,6 @@
           </div>
         </div>
       </template>
-    </amp-list> -->
+    </amp-list>
   </body>
 </html>
