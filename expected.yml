@@ -5,7 +5,8 @@ top
     display_url
     description
     deeplinks
-      - title
+      - type
+        title
         url
 main
   - type
