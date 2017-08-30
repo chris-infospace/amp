@@ -69,7 +69,7 @@
         font-size: 12px;
       }
       .title {
-        font-size: 18px;
+        font-size: 16px;
       }
       .display_url {
         color: #58a33f;
@@ -82,6 +82,9 @@
       }
       .deeplinks a {
         font-size: 13px;
+      }
+      .insp_result {
+        margin-bottom: 20px;
       }
     </style>
   </head>
@@ -98,7 +101,7 @@
     </div>
     <hr/>
 
-    <amp-list width="auto" height="100" layout="fixed-height" src="http://localhost:8080/results">
+    <amp-list width="900" height="1900" layout="responsive" src="http://localhost:5000/">
       <template type="amp-mustache">
         <div id="left">
           <div id="top_ads">
