@@ -1,0 +1,43 @@
+top
+  - type
+    title
+    url
+    display_url
+    description
+    deeplinks
+      - title
+        url
+main
+  - type
+    title
+    url
+    display_url
+    description
+    deeplinks
+      - type
+        title
+        url
+bottom
+  - type
+    title
+    url
+    display_url
+    description
+    deeplinks
+      - type
+        title
+        url
+right
+  - type
+    title
+    url
+    display_url
+    description
+    deeplinks
+      - type
+        title
+        url
+aylf
+  - type
+    title
+    url

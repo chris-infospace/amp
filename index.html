@@ -5,6 +5,9 @@
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
     <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+    <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
 
     <title>Webcrawler</title>
 
@@ -25,7 +28,87 @@
       <input type="submit" value="Search" class="ampstart-btn caps">
     </form>
 
+    <amp-list width="auto" height="100" layout="fixed-height" src="http://localhost:8080/results">
+      <template type="amp-mustache">
+        <div id="left">
+          <div id="top_ads">
+            <span>Ads</span>
+            {{#top}}
+            <div class="insp_result {{type}}">
+              <a href="{{url}}">{{title}}</a>
+              <div>{{display_url}}</div>
+              <div class="deeplinks">
+                {{#deeplinks}}
+                <a href="{{url}}">{{title}}</a>
+                {{/deeplinks}}
+              </div>
+            </div>
+            {{/top}}
+          </div>
+          <div id="main">
+            <span>Web Results</span>
+            {{#main}}
+            <div class="insp_result {{type}}">
+              <a href="{{url}}">{{title}}</a>
+              <div>{{display_url}}</div>
+              <div>{{description}}</div>
+              <div class="deeplinks">
+                {{#deeplinks}}
+                <a href="{{url}}">{{title}}</a>
+                {{/deeplinks}}
+              </div>
+            </div>
+            {{/main}}
+          </div>
+          <div id="bottom_ads">
+            <span>Ads</span>
+            {{#bottom}}
+            <a href="{{url}}">{{title}}</a>
+            <div>{{display_url}}</div>
+            <div>{{description}}</div>
+            <div class="deeplinks">
+              {{#deeplinks}}
+              <a href="{{url}}">{{title}}</a>
+              {{/deeplinks}}
+            </div>
+            {{/bottom}}
+          </div>
+          <div id="bottom_aylf">
+            <span>Are you looking for?</span>
+            {{#aylf}}
+            <div class="insp_result {{type}}">
+              <a href="{{url}}">{{title}}</a>
+            </div>
+            {{/aylf}}
+          </div>
+        </div>
+        <div id="right">
+          <div id="right_ads">
+            <span>Ads</span>
+            {{#right}}
+            <div class="insp_result {{type}}">
+              <a href="{{url}}">{{title}}</a>
+              <div>{{display_url}}</div>
+              <div>{{description}}</div>
+              <div class="deeplinks">
+                {{#deeplinks}}
+                <a href="{{url}}">{{title}}</a>
+                {{/deeplinks}}
+              </div>
+            </div>
+            {{/right}}
+          </div>
+          <div id="right_aylf">
+            <span>Are you looking for?</span>
+            {{#aylf}}
+            <div class="insp_result {{type}}">
+              <a href="{{url}}">{{title}}</a>
+            </div>
+            {{/aylf}}
+          </div>
+        </div>
 
-    
+      </template>
+    </amp-list>
   </body>
 </html>
