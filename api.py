@@ -481,7 +481,7 @@ class GetBingData(Resource):
     def get(self):
         return bingdata
 
-api.add_resource(GetBingData, '/Bing')
+api.add_resource(GetBingData, '/')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
